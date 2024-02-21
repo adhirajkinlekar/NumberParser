@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberParser", "NumberParser.csproj", "{047F7763-BC60-47EC-9EA3-CE4BF13BC69D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{047F7763-BC60-47EC-9EA3-CE4BF13BC69D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{047F7763-BC60-47EC-9EA3-CE4BF13BC69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{047F7763-BC60-47EC-9EA3-CE4BF13BC69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{047F7763-BC60-47EC-9EA3-CE4BF13BC69D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2696E3B0-B493-4C1A-882C-94244A7305C3}
+	EndGlobalSection
+EndGlobal
