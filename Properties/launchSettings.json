@@ -2,7 +2,7 @@
   "profiles": {
     "NumberParser": {
       "commandName": "Project",
-      "commandLineArgs": "hello \r\ntxt   "
+      "commandLineArgs": "1233,33,873773,3383\r\ntxt   "
     }
   }
 }

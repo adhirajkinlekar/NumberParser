@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualBasic.FileIO;
+using NumberParser.misc;
 using System.Collections;
 using System.ComponentModel;
 using System.Linq;
@@ -41,7 +42,7 @@ namespace NumberParser
             try
             {
                 return numbersString.Split(',')
-                    .Select(str => int.Parse(str))
+                    .Select(str => int.Parse(str.Replace(" ", "")))
                     .OrderByDescending(num => num)
                     .Select(x => x.ToString())
                     .ToArray();
@@ -54,21 +55,24 @@ namespace NumberParser
 
         private static IFileWriter FileFormatFactory(string fileFormat, string[] content)
         {
-            string[] validFileFormats = ["txt", "xml", "json"];
 
             switch (fileFormat.ToLower())
             {
-                case "txt":
+                case AppConstants.TXTFileFormat:
+
                     return new TXTWriter(content);
 
-                case "xml":
+                case AppConstants.XMLFileFormat:
+
                     return new XMLWriter(content);
 
-                case "json":
+                case AppConstants.JSONFileFormat:
+
                     return new JSONWriter(content);
 
                 default:
-                    throw new ArgumentException($"The program only supports the following formats: {string.Join(", ", validFileFormats)}.");
+
+                    throw new ArgumentException($"The program only supports the following formats: txt, xml and json.");
             }
         }
     }
@@ -110,7 +114,7 @@ namespace NumberParser
 
     public class TXTWriter : Writer, IFileWriter
     {
-        public string Extension { get; } = ".txt";
+        public string Extension { get; } = $".{AppConstants.TXTFileFormat}";
 
         public string[] Content { get; }
    
@@ -139,7 +143,7 @@ namespace NumberParser
 
     public class XMLWriter : Writer, IFileWriter
     {
-        public string Extension { get; } = ".xml";
+        public string Extension { get; } = $".{AppConstants.XMLFileFormat}";
 
         public string[] Content { get; }
 
@@ -184,7 +188,7 @@ namespace NumberParser
 
     public class JSONWriter : Writer, IFileWriter
     {
-        public string Extension { get; } = ".json";
+        public string Extension { get; } = $".{AppConstants.JSONFileFormat}";
 
         public string[] Content { get; }
 
