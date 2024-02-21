@@ -2,7 +2,7 @@
   "profiles": {
     "NumberParser": {
       "commandName": "Project",
-      "commandLineArgs": "1,2,3,4,5\r\ntxt"
+      "commandLineArgs": "1,2,3,4,5\r\nxml"
     }
   }
 }

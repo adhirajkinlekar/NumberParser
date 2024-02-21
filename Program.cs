@@ -19,7 +19,7 @@ namespace NumberParser
             {
                 const int expectedArgumentsLength = 2;
 
-                if (args.Length != expectedArgumentsLength) throw new ArgumentException("The program accepts two arguments: a list of numbers and a file format.");
+                if (args.Length != expectedArgumentsLength) throw new ArgumentException("The program accepts two arguments: a list of numbers and a file extention.");
 
                 string numberArg = args[0];
 
@@ -27,7 +27,7 @@ namespace NumberParser
 
                 string[] content = FormatInputForWriting(numberArg);
 
-                IFileWriter fileWriter = FileFormatFactory(formatArg, content);
+                IFileWriter fileWriter = FileExtentionFactory(formatArg, content);
 
                 fileWriter.WriteToFile();
 
@@ -55,20 +55,20 @@ namespace NumberParser
             }
         }
 
-        private static IFileWriter FileFormatFactory(string fileFormat, string[] content)
+        private static IFileWriter FileExtentionFactory(string fileFormat, string[] content)
         {
 
             switch (fileFormat.ToLower())
             {
-                case AppConstants.TXTFileFormat:
+                case AppConstants.TXTExention:
 
                     return new TXTWriter(content);
 
-                case AppConstants.XMLFileFormat:
+                case AppConstants.XMLExention:
 
                     return new XMLWriter(content);
 
-                case AppConstants.JSONFileFormat:
+                case AppConstants.JSONExention:
 
                     return new JSONWriter(content);
 

@@ -38,7 +38,7 @@ namespace NumberParser.classes
 
     public class TXTWriter : Writer, IFileWriter
     {
-        public string Extension { get; } = $".{AppConstants.TXTFileFormat}";
+        public string Extension { get; } = $".{AppConstants.TXTExention}";
 
         public string[] Content { get; }
 
@@ -67,7 +67,7 @@ namespace NumberParser.classes
 
     public class XMLWriter : Writer, IFileWriter
     {
-        public string Extension { get; } = $".{AppConstants.XMLFileFormat}";
+        public string Extension { get; } = $".{AppConstants.XMLExention}";
 
         public string[] Content { get; }
 
@@ -112,7 +112,7 @@ namespace NumberParser.classes
 
     public class JSONWriter : Writer, IFileWriter
     {
-        public string Extension { get; } = $".{AppConstants.JSONFileFormat}";
+        public string Extension { get; } = $".{AppConstants.JSONExention}";
 
         public string[] Content { get; }
 

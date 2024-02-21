@@ -9,11 +9,11 @@ namespace NumberParser.misc
     public static class AppConstants
     {
 
-        public const string TXTFileFormat = "txt";
+        public const string TXTExention = "txt";
 
-        public const string XMLFileFormat = "xml";
+        public const string XMLExention = "xml";
 
-        public const string JSONFileFormat = "json";
+        public const string JSONExention = "json";
 
     }
 }
