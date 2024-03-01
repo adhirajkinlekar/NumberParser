@@ -10,7 +10,7 @@ namespace NumberParser.interfaces
     {
         string Extension { get; }
 
-        string[] Content { get; }
+        IEnumerable<string> Content { get; }
 
         void WriteToFile();
     }

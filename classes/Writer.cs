@@ -5,16 +5,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace NumberParser.classes
 {
-    public class Writer
+    public abstract class Writer
     {
         // Logic to get the file path and create the path if needed.
 
-        protected static string GetFilePath()
+        public static string GetFilePath()
         {
             // directory - \bin\Debug\net8.0\
             string workingDirectory = Environment.CurrentDirectory;
@@ -36,16 +35,11 @@ namespace NumberParser.classes
         }
     }
 
-    public class TXTWriter : Writer, IFileWriter
+    public class TXTWriter(IEnumerable<string> content) : Writer, IFileWriter
     {
         public string Extension { get; } = $".{AppConstants.TXTExention}";
 
-        public string[] Content { get; }
-
-        public TXTWriter(string[] content)
-        {
-            Content = content;
-        }
+        public IEnumerable<string> Content { get; } = content;
 
         public void WriteToFile()
         {
@@ -65,17 +59,11 @@ namespace NumberParser.classes
         }
     }
 
-    public class XMLWriter : Writer, IFileWriter
+    public class XMLWriter(IEnumerable<string> content) : Writer, IFileWriter
     {
         public string Extension { get; } = $".{AppConstants.XMLExention}";
 
-        public string[] Content { get; }
-
-        public XMLWriter(string[] content)
-        {
-
-            Content = content;
-        }
+        public IEnumerable<string> Content { get; } = content;
 
         public void WriteToFile()
         {
@@ -110,17 +98,11 @@ namespace NumberParser.classes
         }
     }
 
-    public class JSONWriter : Writer, IFileWriter
+    public class JSONWriter(IEnumerable<string> content) : Writer, IFileWriter
     {
         public string Extension { get; } = $".{AppConstants.JSONExention}";
 
-        public string[] Content { get; }
-
-        public JSONWriter(string[] content)
-        {
-
-            Content = content;
-        }
+        public IEnumerable<string> Content { get; } = content;
 
         public void WriteToFile()
         {
@@ -132,5 +114,4 @@ namespace NumberParser.classes
             File.WriteAllText(fileName, jsonString);
         }
     }
-
 }
