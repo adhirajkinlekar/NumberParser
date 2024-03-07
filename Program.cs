@@ -1,42 +1,57 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 using NumberParser.classes;
 using NumberParser.interfaces;
-using NumberParser.misc;
-using System.Collections;
-using System.ComponentModel;
-using System.Linq;
-using System.Text.Json;
-using System.Xml;
+using NumberParser.misc; 
 
 namespace NumberParser
 {
-    class App
+    class Program
     {
         public static void Main(string[] args)
         {
 
             try
             {
-                const int expectedArgumentsLength = 2;
 
-                if (args.Length != expectedArgumentsLength) throw new ArgumentException("The program accepts two arguments: a list of numbers and a file extention.");
+                App app = new(args);
 
-                string numberArg = args[0];
+                app.Execute();
 
-                string formatArg = args[1];
-
-                string[] content = FormatInputForWriting(numberArg);
-
-                IFileWriter fileWriter = FileExtentionFactory(formatArg, content);
-
-                fileWriter.WriteToFile();
-
-                Console.WriteLine("Input has been successfully parsed and written to a file in the assets folder in the root directory.");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
+        }
+    }
+
+    class App
+    {
+
+        public string NumberArg { get; set; }
+
+        public string ExtentionArg { get; set; }
+
+
+        public App(string[] args)
+        {
+
+            if (args.Length != AppConstants.expectedAppArgumentsLength) throw new ArgumentException("The program accepts two arguments: a list of numbers and a file extention.");
+
+            NumberArg = args[0];
+
+            ExtentionArg = args[1];
+        }
+
+        public void Execute()
+        {
+            string[] content = FormatInputForWriting(NumberArg);
+
+            IFileWriter fileWriter = FileExtentionFactory(ExtentionArg, content);
+
+            fileWriter.WriteToFile();
+
+            Console.WriteLine("Input has been successfully parsed and written to a file in the assets folder in the root directory.");
         }
 
         private static string[] FormatInputForWriting(string numbersString)
@@ -55,27 +70,19 @@ namespace NumberParser
             }
         }
 
-        private static IFileWriter FileExtentionFactory(string fileFormat, string[] content)
+        private static IFileWriter FileExtentionFactory(string fileExtention, string[] content)
+
         {
-
-            switch (fileFormat.ToLower())
+            return fileExtention.ToLower() switch
             {
-                case AppConstants.TXTExention:
+                AppConstants.TXTExention => new TXTWriter(content),
 
-                    return new TXTWriter(content);
+                AppConstants.XMLExention => new XMLWriter(content),
 
-                case AppConstants.XMLExention:
+                AppConstants.JSONExention => new JSONWriter(content),
 
-                    return new XMLWriter(content);
-
-                case AppConstants.JSONExention:
-
-                    return new JSONWriter(content);
-
-                default:
-
-                    throw new ArgumentException($"The program only supports the following formats: txt, xml and json.");
-            }
+                _ => throw new ArgumentException($"The program only supports the following extentions: txt, xml and json."),
+            };
         }
     }
 }

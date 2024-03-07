@@ -15,5 +15,6 @@ namespace NumberParser.misc
 
         public const string JSONExention = "json";
 
+        public const int expectedAppArgumentsLength = 2;
     }
 }

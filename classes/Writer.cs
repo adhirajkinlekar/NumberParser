@@ -70,7 +70,7 @@ namespace NumberParser.classes
 
             string fileName = Path.Combine(GetFilePath(), $"my_file{Extension}");
 
-            XmlWriterSettings xmlWriterSettings = new XmlWriterSettings
+            XmlWriterSettings xmlWriterSettings = new()
             {
                 Indent = true,  // Set Indent to true to format the XML with indentation
                 NewLineChars = "\n",  // Set NewLineChars to '\n' for new lines
