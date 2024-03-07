@@ -1,5 +1,4 @@
-﻿using Microsoft.VisualBasic.FileIO;
-using NumberParser.classes;
+﻿using NumberParser.classes;
 using NumberParser.interfaces;
 using NumberParser.misc; 
 
@@ -28,9 +27,9 @@ namespace NumberParser
     class App
     {
 
-        public string NumberArg { get; set; }
+        private string NumberArg { get; }
 
-        public string ExtentionArg { get; set; }
+        private string ExtentionArg { get; }
 
 
         public App(string[] args)
@@ -81,7 +80,7 @@ namespace NumberParser
 
                 AppConstants.JSONExention => new JSONWriter(content),
 
-                _ => throw new ArgumentException($"The program only supports the following extentions: txt, xml and json."),
+                _ => throw new ArgumentException($"The program only supports the following extentions: txt, xml and json.")
             };
         }
     }
