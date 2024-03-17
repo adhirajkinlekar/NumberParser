@@ -1,7 +1,5 @@
 # NumberParser
 
--- Problem statement
-
 Write a C# console app called NumberParser which accepts a comma delimited list of integers as the first parameter, and a file format as the second parameter. The app would be invoked via the command line like this - NumberParser 4,5,1,9,10,58,34,12,0 XML. 
 
 The app should parse the first parameter into an array of integers, sort it into descending order and then persist it in the specified format. The app should support text files, XML and JSON formats.
